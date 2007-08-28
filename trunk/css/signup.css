@@ -1,0 +1,109 @@
+/*-------------------------------------------------
+STRUCTURE
+-------------------------------------------------*/
+
+
+
+
+/*-------------------------------------------------
+HEADER
+-------------------------------------------------*/
+
+#header {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: -30px;
+}
+
+#header h1 {
+
+}
+
+#header h1 a {
+	background: url(/images/stlogo_232.gif) no-repeat left;
+	width: 100%;
+	height: 46px;
+	float: left;
+	text-indent: -1000px;
+}
+
+#header p {
+	visibility: hidden;
+	margin-bottom: -10px;
+}
+
+/*-------------------------------------------------
+BODY
+-------------------------------------------------*/
+
+#content {
+	margin-top: 20px;
+	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
+}
+
+#content h1 {
+	background-color: #cfc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 2.3em;
+	margin-bottom: 20px;
+}
+
+#message {
+	margin-bottom: 20px;
+}
+
+#message .error {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 5px;
+	background-color: #FBE6F2;
+}
+
+.signup th {
+	font-size: 1.3em;
+	font-weight: normal;
+	text-align: right;
+	vertical-align: top;
+	padding-right: 5px;
+}
+
+.signup td {
+	padding-bottom: 10px;
+}
+
+.signup td input[type=text], input[type=password] {
+	font-size: 2em;
+}
+
+.signup td p {
+	margin: 0;
+	margin-top: 10px;
+}
+
+.signup .submit input[type=submit]{
+	border: 3px double #999;
+	border-left-color: #ccc;
+	border-top-color: #ccc;
+	padding: 0.2em;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 1.4em;
+}
+
+/*-------------------------------------------------
+FOOTER
+-------------------------------------------------*/
+
+#footer {
+	font-size: x-small;
+	text-align: right;
+	/*background-color: #EEEEEE;*/
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	color: #ccc;
+}

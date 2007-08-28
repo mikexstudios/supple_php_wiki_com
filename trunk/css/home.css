@@ -1,0 +1,155 @@
+/*-------------------------------------------------
+STRUCTURE
+-------------------------------------------------*/
+.left {
+	/*border-right: 1px solid #ccc;*/
+	padding-right: 10px;
+
+	vertical-align: top;
+}
+
+.right {
+	width: 270px;
+	vertical-align: top;
+	padding-top: 30px;
+}
+
+table tr td {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+/*-------------------------------------------------
+HEADER
+-------------------------------------------------*/
+
+#header {
+	margin-bottom: -30px;
+}
+
+#header h1 {
+
+}
+
+#header h1 a {
+	background: url(/images/stlogo_232.gif) no-repeat right;
+	width: 100%;
+	height: 46px;
+	float: left;
+	text-indent: -1000px;
+}
+
+#header p {
+	visibility: hidden;
+}
+
+/*-------------------------------------------------
+BODY
+-------------------------------------------------*/
+
+#content {
+	clear: both;
+	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
+}
+
+#content p {
+	font-size: 1.6em;
+	text-align: justify;	
+}
+
+#features {
+	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
+	font-size: 1.6em;
+	text-align: right;
+}
+
+#interact {
+	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
+
+}
+
+#interact p {
+	margin: 0;
+	padding: 0;
+	font-size: 1.4em;
+}
+
+#signup {
+	background-color: #ccffcc;
+	margin-top: -17px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	
+	text-align: center;
+}
+
+#signup .signup_link {
+		font-size: 2.1em;
+}
+
+#login {
+	background-color: #eee;
+	margin-top: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#login p {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+#login table {
+	width: 100%;
+	text-align: center;
+}
+
+#login table th {
+	text-align: right;
+	font-size: 1.3em;
+	vertical-align: middle;
+}
+
+#login form input[type=text] {
+	width: 150px;
+	font-size: 1.3em;
+	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
+}
+
+#login .submit {
+	margin-top: 5px;
+	margin-right: 2px;
+	text-align: right;
+}
+
+#login .submit input {
+	border: 3px double #999;
+	border-left-color: #ccc;
+	border-top-color: #ccc;
+	color: #333;
+	padding: 0.2em;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+/*-------------------------------------------------
+FOOTER
+-------------------------------------------------*/
+
+#footer {
+	font-size: x-small;
+	text-align: right;
+	/*background-color: #EEEEEE;*/
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	color: #ccc;
+}

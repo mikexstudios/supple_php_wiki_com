@@ -1,0 +1,65 @@
+/*-------------------------------------------------
+HEADER
+-------------------------------------------------*/
+
+#header {
+	margin-top: -11px;
+	margin-bottom: -20px;
+}
+
+#header h1 a {
+	margin: 0;
+	padding: 0;
+	text-indent: -100em;
+	overflow: hidden;
+	background: url(/images/logo-medium.gif) no-repeat left;
+	height: 62px;
+	width: 300px;
+	display: block;
+}
+#header p {
+	visibility: hidden;
+}
+
+/*-------------------------------------------------
+BODY
+-------------------------------------------------*/
+
+#content {
+	padding: 0 10px 10px 10px;
+	/*border-bottom: 1px solid #ccc;*/
+	border: 1px solid #ccc;
+	padding-right: 10px;
+	font-size: 1.3em;
+}
+
+#content h2 {
+	font-size: 30px;
+	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
+	font-weight: normal;
+}
+
+#content p {
+	padding-top: 10px;
+	text-align: justify;
+	line-height: 1.3em;
+}
+
+/*-------------------------------------------------
+FOOTER
+-------------------------------------------------*/
+
+#footer {
+	clear: both;
+	font-size: x-small;
+	text-align: right;
+	/*background-color: #EEEEEE;*/
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	color: #ccc;
+}
+
+
+
