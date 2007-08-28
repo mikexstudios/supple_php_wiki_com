@@ -50,7 +50,7 @@ $autoload['libraries'] = array('database');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url', 'array');
 
 
 /*
@@ -78,7 +78,7 @@ $autoload['plugin'] = array();
 |
 */
 
-$autoload['config'] = array('st_config');
+$autoload['config'] = array('st_config', 'constants');
 
 
 /*

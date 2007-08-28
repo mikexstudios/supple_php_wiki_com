@@ -7,4 +7,7 @@ $config['script_files_path'] = BASEPATH.'../../suppleText_CI'; //Location of the
 //Probably don't need this:
 $config['user_database_prefix'] = 'st_'; //NOTE: This is for the database name. Not the table name!
 
+
+$config['encryption_salt'] = 'stsalt_';
+
 ?>

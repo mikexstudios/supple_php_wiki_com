@@ -5,6 +5,15 @@ class Signup extends Controller {
 	function Signup()
 	{
 		parent::Controller();	
+		$this->load->model('users_model');
+	}
+	
+	function _initialize() {
+		//Unfortunately, we can't put the below code in the constructor since
+		//$this isn't fully initialized yet in the constructor (for some reason).
+		
+		$this->load->library('session');
+		$this->load->library('authorization'); //Requires session
 	}
 	
 	function _prepForm() {
@@ -18,7 +27,7 @@ class Signup extends Controller {
 		$rules['email_again'] = 'required|trim|max_length[300]|valid_email|matches[email]';
 		$rules['password'] = 'required|trim|matches[password_again]'; //Should add a min_length in the future
 		$rules['password_again'] = 'required|trim|matches[password]';
-		$rules['signup_for'] = 'required|trim|alpha';
+		$rules['signup_for'] = 'required|trim|alpha|callback__signup_for_check';
 		$this->validation->set_rules($rules);
 		
 		//Also repopulate the form
@@ -52,47 +61,78 @@ class Signup extends Controller {
 		return true;
 	}
 	
+	function _signup_for_check($in_option) {
+		if($in_option == 'wiki' || $in_option == 'user')
+		{
+			return true;
+		}
+		
+		$this->validation->set_message('_signup_for_check', 'The "What would you like" option you selected is invalid.');
+		return false;
+	}
+	
 	function index()
 	{
 		$this->newuser();
 	}
 	
 	function newuser() {	
+		$this->_initialize();
+		if($this->authorization->is_logged_in())
+		{
+			//If user is logged in, we do not show the sign up page. Rather we
+			//show the add wiki page
+			$this->newwiki();
+		}
+		
 		$this->_prepForm();
 		
 		if($this->validation->run() === TRUE)
 		{
-			die('here');
 			
-			//The form is successful! This is where we sign the user up.
-			$this->load->library('signup');
-			$this->signup->setUsersURL(base_url().$this->config->item('users_dir').'/');
-			$this->signup->setUsersDirectory($this->config->item('users_path'));
-			$this->signup->setScriptFilesDirectory($this->config->item('script_files_path'));
+			//Okay, so we create the new user first. Then if needed, we send the user
+			//to create a new wiki			
+			$this->users_model->username = $this->validation->username;
+			$this->users_model->set_value('uid', $this->users_model->get_next_uid());
+			$this->load->library('encrypt');
+			$hashed_password = $this->encrypt->sha1($this->config->item('encryption_salt').$this->validation->password);		
+			$this->users_model->set_value('password', $hashed_password);
+			$this->users_model->set_value('email', $this->validation->email);
+			$this->users_model->set_value('role', 'Administrator');
 			
-			$this->signup->setName($this->validation->name);
-			$this->signup->setEmail($this->validation->email);
+			//We might want to send an email here.
 			
+			//Log the user in here
+			$this->authorization->set_logged_in($this->validation->username);
 			
-			//Create new home directory for the user with symbolic links to the st-system
-			$this->signup->createNewDirectory();
-			$this->signup->copyOverScriptFiles();
+			//Check to see if the user wants to create a wiki
+			if($this->validation->signup_for == 'wiki')
+			{
+				redirect('/signup/newwiki'); 
+			}
 			
-			//Generate config file
-			$this->signup->generateConfigFile();
-			
-			
-			//Create new database table
-			$this->signup->createAndPopulateDatabase();
-			
-			//Create subdomain
-			
-			//Send confirmation email
-			$data['user_url'] = $this->signup->full_user_url;
-			$this->load->view('signup_success', $data);
+			//Otherwise, display signup successful page.
+
 		}
 		
-		$this->load->view('signup');
+		$data['page_title'] = 'Sign up for your own free wiki!';
+		$this->load->view('signup', $data);
+	}
+	
+	function newwiki() {
+		$this->_initialize();
+		
+		if(!$this->authorization->is_logged_in())
+		{
+			//If user is not logged in, we prompt for login
+			die('You must be logged in!');
+		}
+		
+		echo $this->session->userdata('username');
+		die('here');
+		
+		$data['page_title'] = 'Sign up for your own free wiki!';
+		$this->load->view('signup-newwiki', $data);
 	}
 }
 ?>
