@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Signup {
+class CreateWiki {
 	var $CI;
 	var $users_url; //No trailing slash
 	var $users_path; //No trailing slash
@@ -10,9 +10,22 @@ class Signup {
 	
 	var $full_user_url;
 	
-    function Signup() {
+    function CreateWiki() {
     	$this->CI =& get_instance();
     }
+    
+    function does_wiki_exist($in_wiki) {
+			$query = $CI->db->query('SHOW TABLES LIKE '.$in_wiki.'_%');
+			if ($query->num_rows() > 0)
+			{
+				foreach ($query->result() as $row)
+   			{
+   				vardump($row);
+   			}
+			}
+			
+			return false;
+		}
     
     function setUsersURL($in_url) {
     	$this->users_url = $in_url;

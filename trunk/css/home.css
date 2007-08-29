@@ -138,6 +138,10 @@ BODY
 	padding-right: 10px;
 }
 
+#login .wiki_list {
+	margin: 0;
+	font-size: 1.6em;
+}
 
 /*-------------------------------------------------
 FOOTER

@@ -57,6 +57,34 @@
 
 	<td class="right">
 	<div id="interact">
+		<?php if($this->authorization->is_logged_in()): ?>
+			<?php
+				//Check if the user has created any wikis 
+				$user_wikis = get('user_wikis');
+				if(count($user_wikis) > 0 && !empty($user_wikis[0])): 
+			?>
+		<div id="signup">
+			<p>Welcome back, <?php out('logged_in_username'); ?>!</p>
+			<p class="signup_link"><a href="<?php echo site_url('signup'); ?>">Create another wiki!</a></p>
+		</div>
+		<div id="login">
+			<p><strong>Visit your wiki<?php echo (count($user_wikis) > 1) ? 's' : ''; ?>:</strong></p>
+			<ul class="wiki_list">
+				<?php foreach($user_wikis as $each_wiki): ?>
+				<li><a href="<?php echo site_url('users/'.$each_wiki); ?>"><?php echo $each_wiki; ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+			<?php else: ?>
+		<div id="signup">
+			<p>Welcome back, <?php out('logged_in_username'); ?>!</p>
+			<p class="signup_link"><a href="<?php echo site_url('signup'); ?>">Create your own wiki!</a></p>
+		</div>
+		<div id="login">
+			<p>You are currently associated with no wikis.</p>
+		</div>
+			<?php endif; ?>
+		<?php else: ?>
 		<div id="signup">
 			<p>Get your own free wiki in seconds:</p>
 			<p class="signup_link"><a href="<?php echo site_url('signup'); ?>">Sign up now!</a></p>
@@ -84,6 +112,8 @@
 			</form>
 			
 		</div>
+		<?php endif; ?>
+		
 	</div>
 	</td>
 	

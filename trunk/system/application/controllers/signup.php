@@ -127,24 +127,40 @@ class Signup extends Controller {
 			redirect('/admin/users/login');
 		}
 		
+		$this->load->library('createwiki');
+		
 		//Prep form
 		$this->load->library('validation');
 		$this->validation->set_error_delimiters('<div class="error">', '</div>');
 		
 		//Set validation rules
 		//Note we should also validate that the name does not already exist!
-		$rules['domain'] = 'required|trim|min_length[4]|max_length[20]|alpha_dash|callback__signup_user_exist_check';
-		$rules['title'] = 'required|trim|max_length[300]|valid_email|matches[email_again]';
+		$rules['domain'] = 'required|trim|min_length[4]|max_length[20]|alpha_dash|callback__signup_wiki_exist_check';
+		$rules['title'] = 'required|trim|max_length[300]|xss_filter';
 		$this->validation->set_rules($rules);
 		
 		//Also repopulate the form
-		$fields['domain'] = 'Username';
-		$fields['title'] = 'Email Address';
+		$fields['domain'] = 'Wiki Domain';
+		$fields['title'] = 'Wiki Title';
 		$this->validation->set_fields($fields);
+		
+		if($this->validation->run() === TRUE)
+		{
+			
+		}
 		
 		$data['page_title'] = 'Sign up for your own free wiki!';
 		$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
 		$this->load->view('signup-newwiki', $data);
+	}
+	
+	function _signup_wiki_exist_check($in_wiki) {
+		if($this->signup->does_wiki_exist($in_wiki) === TRUE)
+		{
+			$this->validation->set_message('_signup_wiki_exist_check', 'The username you selected already exists! Please try picking another username.');
+			return false; //User exists!
+		}
+		return true;
 	}
 }
 ?>

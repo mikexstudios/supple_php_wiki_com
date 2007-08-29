@@ -10,7 +10,7 @@
 </div>
 
 <p class="description">
-	Hi, <?php out('logged_in_username'); ?>! Fill out the form below to add a wiki to your account. You currently have
+	<span class="highlight">Hi, <?php out('logged_in_username'); ?></span>! Fill out the form below to add a wiki to your account. You currently have
 	unlimited number of wikis you can create! However, please only create wikis
 	that you will use!
 </p>
