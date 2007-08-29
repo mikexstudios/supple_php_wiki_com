@@ -23,7 +23,7 @@ HEADER
 	width: 100%;
 	height: 46px;
 	float: left;
-	text-indent: -1000px;
+	text-indent: -3000px;
 }
 
 #header p {
@@ -78,6 +78,7 @@ BODY
 
 .signup td {
 	padding-bottom: 10px;
+	width: 70%;
 }
 
 .signup td input[type=text], input[type=password] {

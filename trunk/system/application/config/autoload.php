@@ -38,7 +38,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database');
+$autoload['libraries'] = array('database', 'session', 'template');
 
 
 /*
@@ -50,7 +50,7 @@ $autoload['libraries'] = array('database');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'array');
+$autoload['helper'] = array('hacks', 'url', 'array', 'theme', 'user');
 
 
 /*

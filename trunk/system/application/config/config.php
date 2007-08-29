@@ -248,7 +248,7 @@ $config['sess_match_useragent']	= TRUE;
 |
 */
 $config['cookie_prefix']	= "";
-$config['cookie_domain']	= "";
+$config['cookie_domain']	= ".suppletext.com";
 $config['cookie_path']		= "/";
 
 /*

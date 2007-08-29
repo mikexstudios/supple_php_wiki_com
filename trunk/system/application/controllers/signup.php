@@ -12,7 +12,6 @@ class Signup extends Controller {
 		//Unfortunately, we can't put the below code in the constructor since
 		//$this isn't fully initialized yet in the constructor (for some reason).
 		
-		$this->load->library('session');
 		$this->load->library('authorization'); //Requires session
 	}
 
@@ -58,9 +57,8 @@ class Signup extends Controller {
 		{
 			//If user is logged in, we do not show the sign up page. Rather we
 			//show the add wiki page
-			$this->newwiki();
+			redirect('/signup/newwiki');
 		}
-		
 		//Prep form
 		$this->load->library('validation');
 		$this->validation->set_error_delimiters('<div class="error">', '</div>');
@@ -125,7 +123,8 @@ class Signup extends Controller {
 		if(!$this->authorization->is_logged_in())
 		{
 			//If user is not logged in, we prompt for login
-			//die('You must be logged in!');
+			$this->session->set_userdata('login_redirect_to', '/signup/newwiki');
+			redirect('/admin/users/login');
 		}
 		
 		//Prep form
