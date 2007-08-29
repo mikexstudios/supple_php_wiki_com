@@ -49,6 +49,12 @@ BODY
 	margin-bottom: 20px;
 }
 
+#content .description {
+	font-size: 1.6em;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 #message {
 	margin-bottom: 20px;
 }

@@ -10,7 +10,8 @@
 	<style type="text/css" media="screen">
 	/* <![CDATA[ */
 	@import url("<?php echo site_url('css/default.css'); ?>");
-	@import url("<?php echo site_url('css/signup.css'); ?>");
+	<?php echo $page_css; ?>
+	
 	/* ]]> */
 	</style>
 	

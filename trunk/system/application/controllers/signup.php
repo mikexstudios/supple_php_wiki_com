@@ -15,30 +15,6 @@ class Signup extends Controller {
 		$this->load->library('session');
 		$this->load->library('authorization'); //Requires session
 	}
-	
-	function _prepForm() {
-		$this->load->library('validation');
-		$this->validation->set_error_delimiters('<div class="error">', '</div>');
-		
-		//Set validation rules
-		//Note we should also validate that the name does not already exist!
-		$rules['username'] = 'required|trim|min_length[4]|max_length[20]|alpha_dash|callback__signup_user_exist_check';
-		$rules['email'] = 'required|trim|max_length[300]|valid_email|matches[email_again]';
-		$rules['email_again'] = 'required|trim|max_length[300]|valid_email|matches[email]';
-		$rules['password'] = 'required|trim|matches[password_again]'; //Should add a min_length in the future
-		$rules['password_again'] = 'required|trim|matches[password]';
-		$rules['signup_for'] = 'required|trim|alpha|callback__signup_for_check';
-		$this->validation->set_rules($rules);
-		
-		//Also repopulate the form
-		$fields['username'] = 'Username';
-		$fields['email'] = 'Email Address';
-		$fields['email_again'] = 'Email Address Again';
-		$fields['password'] = 'Password';
-		$fields['password_again'] = 'Password Again';
-		$fields['signup_for'] = 'What would you like';
-		$this->validation->set_fields($fields);
-	}
 
 	function _does_user_exist($in_username) {
 		$this->users_model->username = $in_username;
@@ -85,11 +61,31 @@ class Signup extends Controller {
 			$this->newwiki();
 		}
 		
-		$this->_prepForm();
+		//Prep form
+		$this->load->library('validation');
+		$this->validation->set_error_delimiters('<div class="error">', '</div>');
+		
+		//Set validation rules
+		//Note we should also validate that the name does not already exist!
+		$rules['username'] = 'required|trim|min_length[4]|max_length[20]|alpha_dash|callback__signup_user_exist_check';
+		$rules['email'] = 'required|trim|max_length[300]|valid_email|matches[email_again]';
+		$rules['email_again'] = 'required|trim|max_length[300]|valid_email|matches[email]';
+		$rules['password'] = 'required|trim|matches[password_again]'; //Should add a min_length in the future
+		$rules['password_again'] = 'required|trim|matches[password]';
+		$rules['signup_for'] = 'required|trim|alpha|callback__signup_for_check';
+		$this->validation->set_rules($rules);
+		
+		//Also repopulate the form
+		$fields['username'] = 'Username';
+		$fields['email'] = 'Email Address';
+		$fields['email_again'] = 'Email Address Again';
+		$fields['password'] = 'Password';
+		$fields['password_again'] = 'Password Again';
+		$fields['signup_for'] = 'What would you like';
+		$this->validation->set_fields($fields);
 		
 		if($this->validation->run() === TRUE)
 		{
-			
 			//Okay, so we create the new user first. Then if needed, we send the user
 			//to create a new wiki			
 			$this->users_model->username = $this->validation->username;
@@ -112,11 +108,15 @@ class Signup extends Controller {
 			}
 			
 			//Otherwise, display signup successful page.
-
+			$data['page_title'] = 'User signup successful!';
+			$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
+			$data['username'] = $this->validation->username;
+			$this->load->view('signup-usersuccess', $data);
 		}
 		
 		$data['page_title'] = 'Sign up for your own free wiki!';
-		$this->load->view('signup', $data);
+		$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
+		$this->load->view('signup-newuser', $data);
 	}
 	
 	function newwiki() {
@@ -125,13 +125,26 @@ class Signup extends Controller {
 		if(!$this->authorization->is_logged_in())
 		{
 			//If user is not logged in, we prompt for login
-			die('You must be logged in!');
+			//die('You must be logged in!');
 		}
 		
-		echo $this->session->userdata('username');
-		die('here');
+		//Prep form
+		$this->load->library('validation');
+		$this->validation->set_error_delimiters('<div class="error">', '</div>');
+		
+		//Set validation rules
+		//Note we should also validate that the name does not already exist!
+		$rules['domain'] = 'required|trim|min_length[4]|max_length[20]|alpha_dash|callback__signup_user_exist_check';
+		$rules['title'] = 'required|trim|max_length[300]|valid_email|matches[email_again]';
+		$this->validation->set_rules($rules);
+		
+		//Also repopulate the form
+		$fields['domain'] = 'Username';
+		$fields['title'] = 'Email Address';
+		$this->validation->set_fields($fields);
 		
 		$data['page_title'] = 'Sign up for your own free wiki!';
+		$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
 		$this->load->view('signup-newwiki', $data);
 	}
 }
