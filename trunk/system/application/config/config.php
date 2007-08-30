@@ -244,7 +244,7 @@ $config['encryption_key'] = "stsitecom";
 | 'sess_secure' = FALSE (boolean) If TRUE the cookie will only be set on ssl (https) connections
 |
 */
-$config['sess_cookie_name']		    = 'stcom_session';
+$config['sess_cookie_name']		    = 'session';
 $config['sess_expiration']		    = 0;
 $config['sess_encrypt_cookie']	    = TRUE;
 $config['sess_table_name']		    = 'sessions';
@@ -252,7 +252,7 @@ $config['sess_match_ip']		    = FALSE;
 $config['sess_match_useragent']	    = TRUE;
 // [OB] additional config items: Set to 'database' to keep userdata exclusively on server database.
 $config['sess_storage']             = 'database';
-$config['sess_data_cookie']         = 'stcom_session_data';
+$config['sess_data_cookie']         = 'session_data';
 // [OB] additional config items: You can leave these as defaults for a standard session
 $config['sess_database']            = 'default';
 $config['sess_timeout']             = 0; 
@@ -273,7 +273,7 @@ $config['sess_secure']              = FALSE;
 | 'cookie_path'   =  Typically will be a forward slash
 |
 */
-$config['cookie_prefix']	= "";
+$config['cookie_prefix']	= "st_";
 $config['cookie_domain']	= ".suppletext.com";
 $config['cookie_path']		= "/";
 

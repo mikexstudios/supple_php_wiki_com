@@ -1,3 +1,8 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<?php 
+	//When we login or logout here, we want to set the redirect_to to this page
+	$this->session->set_userdata('redirect_to', '/');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
@@ -66,6 +71,7 @@
 		<div id="signup">
 			<p>Welcome back, <?php out('logged_in_username'); ?>!</p>
 			<p class="signup_link"><a href="<?php echo site_url('signup'); ?>">Create another wiki!</a></p>
+			
 		</div>
 		<div id="login">
 			<p><strong>Visit your wiki<?php echo (count($user_wikis) > 1) ? 's' : ''; ?>:</strong></p>
@@ -79,6 +85,7 @@
 		<div id="signup">
 			<p>Welcome back, <?php out('logged_in_username'); ?>!</p>
 			<p class="signup_link"><a href="<?php echo site_url('signup'); ?>">Create your own wiki!</a></p>
+			<p class="logout_link">(<a href="<?php echo site_url('admin/users/logout'); ?>">click here to logout</a>)</p>
 		</div>
 		<div id="login">
 			<p>You are currently associated with no wikis.</p>
@@ -92,19 +99,19 @@
 		<div id="login">
 			<p>Already have an account?</p>
 			
-			<form action="<?php site_url('users/login'); ?>">
+			<form action="<?php echo site_url('admin/users/login'); ?>" method="post">
 			<table class="login_box">
 			<tr valign="top"> 
 			<th scope="row">Username:</th> 
 			<td>
-				<input id="username" type="text"  name="username" size="16" value="" />
+				<input id="user_login" type="text"  name="user_login" size="16" value="" />
 			</td>
 			</tr> 
 			
 			<tr valign="top"> 
 			<th scope="row">Password:</th> 
 			<td>
-				<input id="password"  type="text" name="password" size="16" value="" />
+				<input id="user_password" type="password" name="user_password" size="16" value="" />
 			</td>
 			</tr> 
 			</table>

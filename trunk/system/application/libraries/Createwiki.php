@@ -20,8 +20,8 @@ class CreateWiki {
 			$this->CI->db->select('id');
 			$this->CI->db->from($in_wiki.'_pages');
 			$this->CI->db->limit(1);
-			//$query = $this->CI->db->get();
-			return false;
+			$query = $this->CI->db->get();
+
 			if($query === FALSE)
 			{
 				return false;
@@ -41,7 +41,7 @@ class CreateWiki {
     	{
     		show_error('Unable to create directory: '.$this->user_dir);
     	}
-    	chmod($this->user_dir, 0766);
+    	chmod($this->user_dir, 0777);
     }
     
     function copy_over_script_files() {
@@ -81,6 +81,7 @@ class CreateWiki {
     	{
     		show_error('Unable to create directory: '.$this->user_dir.'/st-external');
     	}
+    	chmod($this->user_dir.'/st-external', 0777);
 
     	if(!symlink($this->script_files_path.'/st-external/.htaccess', $this->user_dir.'/st-external/.htaccess'))
     	{
@@ -110,14 +111,28 @@ class CreateWiki {
 			$search[] = 'putyourdbnamehere'; $replace[] = $this->CI->db->database;
 			$search[] = 'usernamehere'; $replace[] = $this->CI->db->username;
 			$search[] = 'yourpasswordhere'; $replace[] = $this->CI->db->password;
-			$search[] = "\$db['suppletext']['dbprefix'].'sessions'"; $replace[] = 'sessions';
+			//$search[] = "\$db['suppletext']['dbprefix'].'sessions'"; $replace[] = 'sessions';
 	
 			$config_sample_file = str_replace($search, $replace, $config_sample_file);
 			
+			//Append things to config file:
+			ob_start();
+?>
+// ** Custom suppleText.com settings ** // 
+$config['sessions_table_prefix'] = '';
+$config['users_table_prefix'] = '';
+<?php
+			$custom_config = ob_get_contents();
+			ob_end_clean();
+			
+			$config_sample_file .= "<?php\n".$custom_config."\n?>";
+						
 			if(!file_put_contents($this->user_dir.'/st-external/st-config.php', $config_sample_file))
 			{
 				show_error('Unable to create config file for user: '.$this->user_dir.'/st-external/st-config.php');
 			}
+			
+			chmod($this->user_dir.'/st-external/st-config.php', 0777);
     }
     
     function create_and_populate_database() {

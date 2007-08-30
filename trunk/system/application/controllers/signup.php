@@ -122,7 +122,7 @@ class Signup extends Controller {
 		if(!$this->authorization->is_logged_in())
 		{
 			//If user is not logged in, we prompt for login
-			$this->session->set_userdata('login_redirect_to', '/signup/newwiki');
+			$this->session->set_userdata('redirect_to', '/signup/newwiki');
 			redirect('/admin/users/login');
 		}
 		
@@ -186,8 +186,8 @@ class Signup extends Controller {
 	function _signup_wiki_exist_check($in_wiki) {
 		if($this->createwiki->does_wiki_exist($in_wiki) === TRUE)
 		{
-			$this->validation->set_message('_signup_wiki_exist_check', 'The username you selected already exists! Please try picking another username.');
-			return false; //User exists!
+			$this->validation->set_message('_signup_wiki_exist_check', 'The wiki domain you selected already exists! Please try picking another wiki domain.');
+			return false; //Wiki exists!
 		}
 		return true;
 	}

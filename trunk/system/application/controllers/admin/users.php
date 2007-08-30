@@ -201,7 +201,7 @@ class Users extends Controller {
 				$this->authorization->set_logged_in($this->validation->user_login);
 				
 				//Redirect to page where we came from
-				$redirect_to = $this->session->ro_userdata('login_redirect_to');
+				$redirect_to = $this->session->ro_userdata('redirect_to');
 				redirect($redirect_to);
 			}
 			
@@ -217,7 +217,17 @@ class Users extends Controller {
 	function logout() {
 		$this->load->library('authorization');
 		$this->authorization->logout();
-		redirect('/admin/users/login');
+		
+		//Redirect to page where we came from
+		$redirect_to = $this->session->ro_userdata('redirect_to');
+		if(!empty($redirect_to))
+		{
+			redirect($redirect_to);
+		}
+		else
+		{
+			redirect('/admin/users/login');
+		}
 	}
 	
 	function lostpassword() {

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Aug 29, 2007 at 09:49 PM
+-- Generation Time: Aug 30, 2007 at 02:57 AM
 -- Server version: 5.0.38
 -- PHP Version: 5.2.1
 
@@ -22,9 +22,11 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE IF NOT EXISTS `sessions` (
   `session_id` varchar(40) character set latin1 NOT NULL default '0',
-  `ip_address` varchar(16) character set latin1 NOT NULL default '0',
-  `user_agent` varchar(50) character set latin1 NOT NULL,
-  `last_activity` int(10) unsigned NOT NULL default '0',
+  `session_start` int(10) unsigned NOT NULL default '0',
+  `session_last_activity` int(10) unsigned NOT NULL default '0',
+  `session_ip_address` varchar(16) character set latin1 NOT NULL default '0',
+  `session_user_agent` varchar(50) character set latin1 NOT NULL,
+  `session_data` text character set latin1 NOT NULL,
   PRIMARY KEY  (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -32,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- Dumping data for table `sessions`
 -- 
 
-INSERT INTO `sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`) VALUES 
-('4dbaa5195510521f9ce5bd9fbecd9036', '192.168.85.1', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv', 1188438526);
+INSERT INTO `sessions` (`session_id`, `session_start`, `session_last_activity`, `session_ip_address`, `session_user_agent`, `session_data`) VALUES 
+('d1abf21ef0cd940e6a8256e9d829a22e', 1188457041, 1188457041, '192.168.85.1', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv', 'a:3:{s:8:"username";s:4:"asdf";s:9:"logged_in";b:1;s:11:"redirect_to";s:1:"/";}');
 
 -- --------------------------------------------------------
 
@@ -49,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `value` varchar(100) NOT NULL,
   `attribute` varchar(50) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- 
 -- Dumping data for table `users`

@@ -88,7 +88,12 @@ BODY
 }
 
 #signup .signup_link {
-		font-size: 2.1em;
+	font-size: 2.1em;
+}
+
+#signup .logout_link {
+	margin-top: 10px;
+	font-size: 1em;
 }
 
 #login {
@@ -116,7 +121,7 @@ BODY
 	vertical-align: middle;
 }
 
-#login form input[type=text] {
+#login form input[type=text], input[type=password] {
 	width: 150px;
 	font-size: 1.3em;
 	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
