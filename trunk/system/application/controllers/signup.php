@@ -147,11 +147,11 @@ class Signup extends Controller {
 		{
 
 			$this->load->library('createwiki');
-			$this->createwiki->users_path = $this->config->item('users_path');
+			$this->createwiki->users_path = $this->config->item('wikis_path');
 			$this->createwiki->wiki_domain = $this->validation->domain;
 			$this->createwiki->wiki_title = $this->validation->title;
 			$this->createwiki->script_files_path = $this->config->item('script_files_path');
-			$this->createwiki->users_url = base_url().$this->config->item('users_dir').'/';
+			$this->createwiki->users_url = base_url().$this->config->item('wikis_dir').'/';
 			$this->createwiki->username = get_logged_in_username();
 			
 			
