@@ -6,4 +6,11 @@ $config['script_files_path'] = realpath(BASEPATH.'../../suppleText_CI'); //Locat
 
 $config['encryption_salt'] = 'stsalt_';
 
+//Include local config file. This is so we can test on many systems without
+//disrupting the SVN repository with local settings.
+if(file_exists(APPPATH.'config/local-config.php'))
+{
+	include APPPATH.'config/local-config.php';
+}
+
 ?>
