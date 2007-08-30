@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://beta.suppletext.com/";
+$config['base_url']	= "http://local.suppletext.com/";
 
 /*
 |--------------------------------------------------------------------------
@@ -332,6 +332,11 @@ $config['time_reference'] = 'local';
 |
 */
 $config['rewrite_short_tags'] = FALSE;
+
+
+//Include local config file. This is so we can test on many systems without
+//disrupting the SVN repository with local settings.
+include APPPATH.'config/local-config.php';
 
 
 ?>
