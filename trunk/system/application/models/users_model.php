@@ -50,15 +50,15 @@ class Users_model extends Model {
 	}
 	
 	function get_value($in_key) {
+
 		$this->db->select('value');
 		$this->db->from(ST_USERS_TABLE);
 		$this->db->where('username', $this->username);
 		$this->db->where('`key`', $in_key); //key is a MySQL reserved word. We need to quote it.
 		$this->db->limit(1);
 		$query = $this->db->get();
-		return element('value', $query->row_array()); //We want a single result
 		
-		$query->free_result();
+		return element('value', $query->row_array()); //We want a single result
 	}
 	
 	function set_value($in_key, $in_value, $in_attribute='') {	

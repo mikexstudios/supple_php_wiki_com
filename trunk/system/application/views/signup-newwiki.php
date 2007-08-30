@@ -21,7 +21,7 @@
   	<th>Wiki Domain:</th>
     <td>
     	<input id="domain" name="domain" size="16" type="text" value="<?php echo $this->validation->domain; ?>" /><span style="font-size: 2.1em">.suppletext.com</span>
-    	<p><span class="highlight">No spaces or special characters (besides the underscore: _) allowed and at least four characters in wiki domain.</span></p>
+    	<p><span class="highlight">No spaces or special characters allowed and at least four characters in wiki domain.</span></p>
     </td>
   </tr>
   <tr>

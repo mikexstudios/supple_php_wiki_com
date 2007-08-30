@@ -108,7 +108,6 @@ class Signup extends Controller {
 			//Otherwise, display signup successful page.
 			$data['page_title'] = 'User signup successful!';
 			$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
-			$data['username'] = $this->validation->username;
 			$this->load->view('signup-usersuccess', $data);
 		}
 		
@@ -135,7 +134,7 @@ class Signup extends Controller {
 		
 		//Set validation rules
 		//Note we should also validate that the name does not already exist!
-		$rules['domain'] = 'required|trim|min_length[4]|max_length[20]|alpha_dash|callback__signup_wiki_exist_check';
+		$rules['domain'] = 'required|trim|min_length[4]|max_length[20]|alpha_numeric|callback__signup_wiki_exist_check';
 		$rules['title'] = 'required|trim|max_length[300]|xss_filter';
 		$this->validation->set_rules($rules);
 		
@@ -146,16 +145,46 @@ class Signup extends Controller {
 		
 		if($this->validation->run() === TRUE)
 		{
+
+			$this->load->library('createwiki');
+			$this->createwiki->users_path = $this->config->item('users_path');
+			$this->createwiki->wiki_domain = $this->validation->domain;
+			$this->createwiki->wiki_title = $this->validation->title;
+			$this->createwiki->script_files_path = $this->config->item('script_files_path');
+			$this->createwiki->users_url = base_url().$this->config->item('users_dir').'/';
+			$this->createwiki->username = get_logged_in_username();
 			
+			
+			//Create new home directory for the user with symbolic links to the st-system
+			$this->createwiki->create_new_directory();
+			$this->createwiki->copy_over_script_files();
+			
+			//Generate config file
+			$this->createwiki->generate_config_file();
+			
+			//Create new database table
+			$this->createwiki->create_and_populate_database();
+			
+			//Create subdomain
+			
+			//Send confirmation email
+			//$data['user_url'] = $this->createwiki->full_user_url;
+			$data['page_title'] = 'Your new wiki has been successfully created!';
+			$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
+			$data['wiki_url'] = $this->validation->domain.'.suppletext.com';
+			$this->load->helper('url'); //prep_url in the theme
+			$this->load->view('signup-wikisuccess', $data);
 		}
-		
-		$data['page_title'] = 'Sign up for your own free wiki!';
-		$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
-		$this->load->view('signup-newwiki', $data);
+		else
+		{
+			$data['page_title'] = 'Sign up for your own free wiki!';
+			$data['page_css'] = '@import url("'.site_url('css/signup.css').'");';
+			$this->load->view('signup-newwiki', $data);
+		}
 	}
 	
 	function _signup_wiki_exist_check($in_wiki) {
-		if($this->signup->does_wiki_exist($in_wiki) === TRUE)
+		if($this->createwiki->does_wiki_exist($in_wiki) === TRUE)
 		{
 			$this->validation->set_message('_signup_wiki_exist_check', 'The username you selected already exists! Please try picking another username.');
 			return false; //User exists!
