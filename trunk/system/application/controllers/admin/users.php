@@ -201,8 +201,7 @@ class Users extends Controller {
 				$this->authorization->set_logged_in($this->validation->user_login);
 				
 				//Redirect to page where we came from
-				$redirect_to = $this->session->userdata('login_redirect_to');
-				$this->session->set_userdata('login_redirect_to', ''); //Clear the redirect to.
+				$redirect_to = $this->session->ro_userdata('login_redirect_to');
 				redirect($redirect_to);
 			}
 			
