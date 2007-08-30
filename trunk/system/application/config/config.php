@@ -336,7 +336,10 @@ $config['rewrite_short_tags'] = FALSE;
 
 //Include local config file. This is so we can test on many systems without
 //disrupting the SVN repository with local settings.
-include APPPATH.'config/local-config.php';
+if(file_exists(APPPATH.'config/local-config.php'))
+{
+	include APPPATH.'config/local-config.php';
+}
 
 
 ?>
