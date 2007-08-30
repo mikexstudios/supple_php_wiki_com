@@ -71,7 +71,7 @@
 		<div id="signup">
 			<p>Welcome back, <?php out('logged_in_username'); ?>!</p>
 			<p class="signup_link"><a href="<?php echo site_url('signup'); ?>">Create another wiki!</a></p>
-			
+			<p class="logout_link">(<a href="<?php echo site_url('admin/users/logout'); ?>">click here to logout</a>)</p>
 		</div>
 		<div id="login">
 			<p><strong>Visit your wiki<?php echo (count($user_wikis) > 1) ? 's' : ''; ?>:</strong></p>
