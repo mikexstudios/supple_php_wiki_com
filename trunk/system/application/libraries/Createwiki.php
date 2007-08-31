@@ -3,6 +3,7 @@
 class CreateWiki {
 	var $CI;
 	var $users_url; //No trailing slash
+	var $base_domain;
 	var $users_path; //No trailing slash
 	var $script_files_path; //No trailing slash
 	var $user_dir; //The current user's directory
@@ -107,7 +108,8 @@ class CreateWiki {
 			//Set search and replaces
 			$search[] = 'st_'; $replace[] = $this->wiki_domain.'_'; //Do this before the others since this has the most potential to conflict.
 			//$search[] = 'localhost'; $replace[] = $db_config['hostname'];
-			$search[] = 'http://yoursite.com/'; $replace[] = $this->users_url.$this->wiki_domain.'/';
+			//$search[] = 'http://yoursite.com/'; $replace[] = $this->users_url.$this->wiki_domain.'/';
+			$search[] = 'http://yoursite.com/'; $replace[] = 'http://'.$this->wiki_domain.'.'.$this->base_domain.'/';
 			$search[] = 'putyourdbnamehere'; $replace[] = $this->CI->db->database;
 			$search[] = 'usernamehere'; $replace[] = $this->CI->db->username;
 			$search[] = 'yourpasswordhere'; $replace[] = $this->CI->db->password;

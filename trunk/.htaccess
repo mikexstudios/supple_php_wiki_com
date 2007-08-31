@@ -1,5 +1,25 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine on
+
+	# Skip rewrite if no hostname or if subdomain is www
+	RewriteCond %{HTTP_HOST} .
+	RewriteCond %{HTTP_HOST} !^(www|local|beta)\. [NC]
+	RewriteCond %{REQUEST_URI} !^st-external/.* [NC]
+	# Extract (required) subdomain (%1), and first path element (%3), discard port number if present (%2)
+	RewriteCond %{HTTP_HOST}<>%{REQUEST_URI} ^([^.]+)\.suppletext\.com(:80)?<>/([^/]*) [NC]
+	# Rewrite to /subdomain/path
+	RewriteRule ^st-external/(.*) wiki/%1/st-external/$1 [L]
+	#RewriteCond ^st-external/ wiki/ [L]
+	
+	# Skip rewrite if no hostname or if subdomain is www
+	RewriteCond %{HTTP_HOST} .
+	RewriteCond %{HTTP_HOST} !^(www|local|beta)\. [NC]
+	RewriteCond %{REQUEST_URI} !^st-external/.* [NC]
+	# Extract (required) subdomain (%1), and first path element (%3), discard port number if present (%2)
+	RewriteCond %{HTTP_HOST}<>%{REQUEST_URI} ^([^.]+)\.suppletext\.com(:80)?<>/([^/]*) [NC]
+	# Rewrite to /subdomain/path
+	RewriteRule ^(.*) wiki/%1/index.php/$1 [QSA,L] 
+
 	RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*)$ index.php/$1 [L]

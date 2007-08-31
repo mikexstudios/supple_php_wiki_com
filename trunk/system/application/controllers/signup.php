@@ -152,6 +152,7 @@ class Signup extends Controller {
 			$this->createwiki->wiki_title = $this->validation->title;
 			$this->createwiki->script_files_path = $this->config->item('script_files_path');
 			$this->createwiki->users_url = base_url().$this->config->item('wikis_dir').'/';
+			$this->createwiki->base_domain = 'suppletext.com';
 			$this->createwiki->username = get_logged_in_username();
 			
 			

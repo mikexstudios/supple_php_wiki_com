@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php 
 	//When we login or logout here, we want to set the redirect_to to this page
-	$this->session->set_userdata('redirect_to', '/');
+	$this->session->set_userdata('redirect_to', '/home');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
