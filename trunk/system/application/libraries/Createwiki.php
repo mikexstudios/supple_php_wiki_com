@@ -134,7 +134,7 @@ $config['disable_plugin_admin'] = true;
 $config['simple_admin_options'] = true;
 $config['admin_theme'] = 'suppletextcom';
 $config['cookie_domain']	= '.suppletext.com';
-$config['mu_base_url'] = '<?php echo base_url(); ?>'';
+$config['mu_base_url'] = '<?php echo base_url(); ?>';
 <?php
 			$custom_config = ob_get_contents();
 			ob_end_clean();
