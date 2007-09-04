@@ -17,6 +17,12 @@ class CreateWiki {
     }
     
     function does_wiki_exist($in_wiki) {
+    	//We have some names that the user cannot use:
+    	if(preg_match('/(local|beta|admin|dashboard|accounts|www|forums)/', $in_wiki))
+    	{
+				return true;
+			}
+    
 			//$query = $this->CI->db->query('DESCRIBE `'.$in_wiki.'`;');
 			$this->CI->db->select('id');
 			$this->CI->db->from($in_wiki.'_pages');
@@ -123,6 +129,12 @@ class CreateWiki {
 // ** Custom suppleText.com settings ** // 
 $config['sessions_table_prefix'] = '';
 $config['users_table_prefix'] = '';
+$config['disable_user_admin'] = true;
+$config['disable_plugin_admin'] = true;
+$config['simple_admin_options'] = true;
+$config['admin_theme'] = 'default';
+$config['cookie_domain']	= ".suppletext.com";
+$config['mu_base_url'] = "http://local.suppletext.com/";
 <?php
 			$custom_config = ob_get_contents();
 			ob_end_clean();

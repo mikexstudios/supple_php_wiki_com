@@ -77,7 +77,7 @@
 			<p><strong>Visit your wiki<?php echo (count($user_wikis) > 1) ? 's' : ''; ?>:</strong></p>
 			<ul class="wiki_list">
 				<?php foreach($user_wikis as $each_wiki): ?>
-				<li><a href="<?php echo site_url('users/'.$each_wiki); ?>"><?php echo $each_wiki; ?></a></li>
+				<li><a href="<?php echo prep_url($each_wiki.'.suppletext.com'); ?>"><?php echo $each_wiki; ?></a></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>
