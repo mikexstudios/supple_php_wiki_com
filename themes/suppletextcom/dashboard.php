@@ -17,7 +17,7 @@
 
 <p>Need help with suppleText? Please see our 
 <a href='http://www.suppletext.org/Documentation'>documentation</a> or visit 
-the <a href='http://www.suppletext.org/forums/'>support forums</a>.</p>
+the <a href='http://forums.suppletext.com'>support forums</a>.</p>
 
 </div>
 <!--closing page content-->

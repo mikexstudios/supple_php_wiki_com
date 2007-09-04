@@ -500,13 +500,13 @@ FOOTER
 #footer {
 	clear: both;
 	text-align: center;
-	width: 500px;
+	width: 600px;
 	margin: auto;
 	height: 100px;
 }
 
 #footer .docs {
-	padding-top: 19px;
+	padding-top: 12px;
 	line-height: 160%;
 }
 
@@ -517,6 +517,7 @@ FOOTER
 	float: left;
 	margin: 0;
 	padding: 0;
+	
 }
 
 /*-------------------------------------------------

@@ -18,7 +18,7 @@
 
 <div id="login">
 
-<h1>Login to <a href="<?php out('page_url', get('root_page')); ?>"><?php out('site_name'); ?></a></h1>
+<h1><a href="<?php echo $this->config->item('mu_base_url'); ?>">suppleText.com</a></h1>
 
 <div id="message">
 	<?php if(!empty($this->validation->error_string)): ?>
@@ -45,7 +45,7 @@
 </div>
 
 <ul>
-	<li><a href="<?php out('admin_url', 'users/register'); ?>">Register</a></li>
+	<li><a href="<?php echo $this->config->item('mu_base_url'); ?>signup">Get a free suppleText account! &raquo;</a></li>
 	<li><a href="<?php out('admin_url', 'users/lostpassword'); ?>" title="Password Lost and Found">Lost your password?</a></li>
 </ul>
 

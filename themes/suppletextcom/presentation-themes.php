@@ -14,7 +14,6 @@
 	<h3><a href="<?php echo $theme_data['url'] ?>"><?php echo $theme_data['name'] ?> <?php echo $theme_data['version'] ?></a> by <a href="<?php echo $theme_data['author_url'] ?>" title="Visit author homepage"><?php echo $theme_data['author'] ?></a></h3>
 	
 	<p><?php echo $theme_data['description'] ?></p>
-	<p>All of this theme&#8217;s files are located in <code>st-external/themes/<?php out('setting', 'use_theme') ?></code>.</p>
 </div>
 
 <h2>Available Themes</h2>
@@ -40,10 +39,6 @@
 <p>There are currently no avaliable themes.</p>
 <br />
 <?php endif; ?>
-
-
-<h2>Get More Themes</h2>
-<p>You can find additional themes for your site in the <a href="http://www.suppletext.org/Themes">suppleText theme directory</a>. To install a theme you generally just need to upload the theme folder into your <code>st-external/themes</code> directory. Once a theme is uploaded, you should see it on this page.</p>
 
 </div>
 <!--closing page content-->

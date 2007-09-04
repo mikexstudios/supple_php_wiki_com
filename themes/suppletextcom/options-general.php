@@ -23,14 +23,6 @@
 </tr> 
 
 <tr valign="top"> 
-<th scope="row">Your wiki address (URL):</th> 
-<td>
-	<p class="config_static_value"><?php echo $this->config->item('base_url'); ?></p><br />
-	Note: To change your wiki address (URL), you must edit the <code>/st-external/st-config.php</code> file.   
-</td>
-</tr> 
-
-<tr valign="top"> 
 <th scope="row">Default wiki page:</th> 
 <td>
 	<input name="root_page" type="text" id="root_page" value="<?php if(empty($this->validation->root_page)) { out('setting', 'root_page'); } else { echo $this->validation->root_page; } ?>" size="40" /><br />
