@@ -127,6 +127,7 @@ class CreateWiki {
 			ob_start();
 ?>
 // ** Custom suppleText.com settings ** // 
+$config['wiki_tag'] = '<?php echo $this->wiki_domain; ?>';
 $config['sessions_table_prefix'] = '';
 $config['users_table_prefix'] = '';
 $config['disable_user_admin'] = true;

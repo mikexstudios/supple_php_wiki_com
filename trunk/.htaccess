@@ -9,7 +9,6 @@
 	RewriteCond %{HTTP_HOST}<>%{REQUEST_URI} ^([^.]+)\.suppletext\.com(:80)?<>/([^/]*) [NC]
 	# Rewrite to /subdomain/path
 	RewriteRule ^st-external/(.*) wiki/%1/st-external/$1 [L]
-	#RewriteCond ^st-external/ wiki/ [L]
 
 	# Skip rewrite if no hostname or if subdomain is www
 	RewriteCond %{HTTP_HOST} .
