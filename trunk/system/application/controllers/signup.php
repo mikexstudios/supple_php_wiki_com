@@ -92,7 +92,7 @@ class Signup extends Controller {
 			$hashed_password = $this->encrypt->sha1($this->config->item('encryption_salt').$this->validation->password);		
 			$this->users_model->set_value('password', $hashed_password);
 			$this->users_model->set_value('email', $this->validation->email);
-			$this->users_model->set_value('role', 'Administrator');
+			//User role is now set in Createwiki.php for each specific wiki
 			
 			//We might want to send an email here.
 			

@@ -127,6 +127,7 @@ class CreateWiki {
 			ob_start();
 ?>
 // ** Custom suppleText.com settings ** // 
+$config['is_mu'] = true; //Sets multi-wiki environment
 $config['wiki_tag'] = '<?php echo $this->wiki_domain; ?>';
 $config['sessions_table_prefix'] = '';
 $config['users_table_prefix'] = '';
@@ -218,6 +219,8 @@ $config['mu_base_url'] = '<?php echo base_url(); ?>';
 			$user_wikis = add_to_comma_list($user_wikis, $this->wiki_domain);
 			$this->CI->users_model->set_value('wikis', $user_wikis);
 			
+			//Add the user's role on the wiki as Administrator
+			$this->CI->users_model->set_value($this->wiki_domain.'_role', 'Administrator');
     }
     
     
