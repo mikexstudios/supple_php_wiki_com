@@ -131,7 +131,7 @@
 </div>
 
 <div id="footer">
-<small>Page rendered in {elapsed_time} seconds</small>
+<!-- <small>Page rendered in {elapsed_time} seconds</small> -->
 </div>
 
 </div>
