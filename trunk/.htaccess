@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine on
 	
+	ErrorDocument 404 http://beta.suppletext.com/
+	
 	# Skip rewrite if no hostname or if subdomain is www
 	RewriteCond %{HTTP_HOST} .
 	RewriteCond %{HTTP_HOST} !^(www|local|beta|forums)\. [NC]
