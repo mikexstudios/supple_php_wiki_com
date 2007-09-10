@@ -4,8 +4,8 @@ STRUCTURE
 .left {
 	/*border-right: 1px solid #ccc;*/
 	padding-right: 10px;
-
 	vertical-align: top;
+	padding-top: 15px;
 }
 
 .right {
@@ -26,7 +26,6 @@ HEADER
 -------------------------------------------------*/
 
 #header {
-	margin-bottom: -30px;
 }
 
 #header h1 {
@@ -38,11 +37,15 @@ HEADER
 	width: 100%;
 	height: 46px;
 	float: left;
-	text-indent: -1000px;
+	text-indent: -3000px;
 }
 
 #header p {
-	visibility: hidden;
+	color: #fff; /* We can't make visibility hidden or text-indent since IE problems */
+	text-align: right;
+	padding 0;
+	margin: 0;
+	margin-bottom: -15px;
 }
 
 /*-------------------------------------------------
@@ -50,6 +53,7 @@ BODY
 -------------------------------------------------*/
 
 #content {
+
 	clear: both;
 	font-family: Georgia,"Bitstream Vera Serif","Times New Roman",serif;
 }
@@ -86,6 +90,7 @@ BODY
 	
 	text-align: center;
 }
+
 
 #signup .signup_link {
 	font-size: 2.1em;

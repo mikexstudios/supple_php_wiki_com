@@ -111,7 +111,7 @@
 			<tr valign="top"> 
 			<th scope="row">Password:</th> 
 			<td>
-				<input id="user_password" type="password" name="user_password" size="16" value="" />
+				<input id="user_password" type="password" name="user_password" size="17" value="" />
 			</td>
 			</tr> 
 			</table>

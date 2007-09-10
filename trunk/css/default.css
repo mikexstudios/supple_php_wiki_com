@@ -2,6 +2,16 @@
 PAGE BODY
 -------------------------------------------------*/
 
+* {
+   padding:0;
+   margin:0;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote,
+ form, label, ul, ol, dl, fieldset, address {
+    margin-bottom: 1em;
+}
+
 body {
 	margin: 0 auto;
 	padding: 0;
