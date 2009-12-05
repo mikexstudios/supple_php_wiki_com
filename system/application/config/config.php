@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://local.suppletext.com/";
+$config['base_url']	= "http://supple-php-wiki.com/";
 
 /*
 |--------------------------------------------------------------------------
@@ -274,7 +274,7 @@ $config['sess_secure']              = FALSE;
 |
 */
 $config['cookie_prefix']	= "st_";
-$config['cookie_domain']	= ".suppletext.com";
+$config['cookie_domain']	= ".supple-php-wiki.com";
 $config['cookie_path']		= "/";
 
 /*
